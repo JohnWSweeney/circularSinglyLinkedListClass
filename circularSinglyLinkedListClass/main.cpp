@@ -15,9 +15,9 @@ int main()
 	csList cslist;
 
 	list = cslist.init(1234);
-	for (int i = 0; i < 9; i++)
+	for (int i = -5; i < 5; i++)
 	{
-		cslist.addNodeBack(list, pow(i, 5));
+		cslist.addNodeBack(list, pow(i, 4));
 	}
 	result = cslist.size(list, nodeCount);
 	if (result == 0)
@@ -29,9 +29,10 @@ int main()
 	{
 		std::cout << "List is empty.\n";
 	}
-	/// test code here:
+	/// test code here: ////////////////////////////////////////
 	
-	///
+	std::cout << "result: " << result << "\n\n";
+	////////////////////////////////////////////////////////////
 	result = cslist.size(list, nodeCount);
 	if (result == 0)
 	{
