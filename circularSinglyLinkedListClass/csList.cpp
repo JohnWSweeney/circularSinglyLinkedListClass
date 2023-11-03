@@ -447,6 +447,27 @@ int csList::returnPosByPtr(node* list, int &pos, node* ptr)
 	return -1;
 }
 
+int csList::returnFrontData(node* list, int &data)
+{
+	if (list == nullptr) return 1; // list is empty.
+	data = list->data;
+	return 0;
+}
+
+int csList::returnBackData(node* list, int &data)
+{
+	if (list == nullptr) return 1; // list is empty.
+	node* head = list;
+	do {
+		if (list->next == head)
+		{
+			data = list->data;
+			return 0;
+		}
+		list = list->next;
+	} while (list != head);
+}
+
 int csList::returnDataByPos(node* list, int &data, int pos)
 {
 	if (list == nullptr) return 1;

@@ -30,6 +30,8 @@ public:
 	int deleteAfterPtr(node** list, node* ptr);
 	int returnPtrByPos(node* list, int pos, node* &ptr);
 	int returnPosByPtr(node* list, int &pos, node* ptr);
+	int returnFrontData(node* list, int &data);
+	int returnBackData(node* list, int &data);
 	int returnDataByPos(node* list, int &data, int pos);
 	int returnDataByPtr(node* list, int &data, node* ptr);
 	int updateDataByPos(node* list, int pos, int data);

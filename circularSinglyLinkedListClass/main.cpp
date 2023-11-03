@@ -4,7 +4,7 @@
 
 int main()
 {
-	std::cout << "Circular Singly Linked List Class v1.0.0\n\n";
+	std::cout << "Circular Singly Linked List Class v1.0.2\n\n";
 	int result;
 	int nodeCount;
 	int data;
