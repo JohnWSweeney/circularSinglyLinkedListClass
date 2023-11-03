@@ -15,10 +15,11 @@
 
 class csList
 {
-public:
+private:
 	node* init(int data);
+public:
 	int addNodeFront(node** list, int data);
-	int addNodeBack(node* list, int data);
+	int addNodeBack(node** list, int data);
 	int addNodeByPos(node** list, int pos, int data);
 	int deleteNodeFront(node** list);
 	int deleteNodeBack(node** list);

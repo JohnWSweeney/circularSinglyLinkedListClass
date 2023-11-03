@@ -23,7 +23,11 @@ node* csList::init(int data)
 
 int csList::addNodeFront(node** list, int data)
 {
-	if (*list == nullptr) return 1;
+	if (*list == nullptr) // list is empty.
+	{
+		*list = this->init(data);
+		return 0;
+	}
 
 	node* head = *list;
 	// find tail node.
@@ -43,22 +47,28 @@ int csList::addNodeFront(node** list, int data)
 	} while (*list != head);
 }
 
-int csList::addNodeBack(node* list, int data)
+int csList::addNodeBack(node** list, int data)
 {
-	if (list == nullptr) return 1;
+	if (*list == nullptr) // list is empty.
+	{
+		*list = this->init(data);
+		return 0;
+	}
 
-	node* head = list;
+	node* head = *list;
 	do {
-		if (list->next == head)
+		node* curr = *list;
+		if (curr->next == head)
 		{
 			node* newNode = new node();
 			newNode->data = data;
+			curr->next = newNode;
 			newNode->next = head;
-			list->next = newNode;
+			*list = head;
 			return 0;
 		}
-		list = list->next;
-	} while (list != head);
+		*list = curr->next;
+	} while (*list != head);
 }
 
 int csList::addNodeByPos(node** list, int pos, int data)
