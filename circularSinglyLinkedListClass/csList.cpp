@@ -21,7 +21,7 @@ node* csList::init(int data)
 	return newNode;
 }
 
-int csList::addNodeFront(node** list, int data)
+int csList::addFront(node** list, int data)
 {
 	if (*list == nullptr) // list is empty.
 	{
@@ -47,7 +47,7 @@ int csList::addNodeFront(node** list, int data)
 	} while (*list != head);
 }
 
-int csList::addNodeBack(node** list, int data)
+int csList::addBack(node** list, int data)
 {
 	if (*list == nullptr) // list is empty.
 	{
@@ -71,7 +71,7 @@ int csList::addNodeBack(node** list, int data)
 	} while (*list != head);
 }
 
-int csList::addNodeByPos(node** list, int pos, int data)
+int csList::addPos(node** list, int pos, int data)
 {
 	if (*list == nullptr) return 1; // list is empty.
 
@@ -84,7 +84,7 @@ int csList::addNodeByPos(node** list, int pos, int data)
 		newNode->next = head;
 		// find tail node.
 		node* tail = nullptr;
-		this->findTailReturnPtr(*list, tail);
+		this->returnTailPtr(*list, tail);
 		tail->next = newNode;
 		*list = newNode; // reset list.
 		return 0;
@@ -114,7 +114,7 @@ int csList::addNodeByPos(node** list, int pos, int data)
 	}
 }
 
-int csList::deleteNodeFront(node** list)
+int csList::deleteFront(node** list)
 {
 	if (*list == nullptr) return 1;
 
@@ -140,7 +140,7 @@ int csList::deleteNodeFront(node** list)
 	} while (*list != head);
 }
 
-int csList::deleteNodeBack(node** list)
+int csList::deleteBack(node** list)
 {
 	if (*list == nullptr) return 1;
 
@@ -165,7 +165,7 @@ int csList::deleteNodeBack(node** list)
 	} while (*list != head);
 }
 
-int csList::deleteNodeByPos(node** list, int pos)
+int csList::deletePos(node** list, int pos)
 {
 	if (*list == nullptr) return 1;
 
@@ -213,7 +213,7 @@ int csList::deleteNodeByPos(node** list, int pos)
 	}
 }
 
-int csList::deleteNodeByPtr(node** list, node* ptr)
+int csList::deletePtr(node** list, node* ptr)
 {
 	if (*list == nullptr) return 1;
 	if (ptr == nullptr) return 2;
@@ -420,7 +420,7 @@ int csList::deleteAfterPtr(node** list, node* ptr)
 	return -1;
 }
 
-int csList::returnPtrByPos(node* list, int pos, node* &ptr)
+int csList::returnPosPtr(node* list, node* &ptr, int pos)
 {
 	if (list == nullptr) return 1;
 
@@ -438,7 +438,7 @@ int csList::returnPtrByPos(node* list, int pos, node* &ptr)
 	return -1;
 }
 
-int csList::returnPosByPtr(node* list, int &pos, node* ptr)
+int csList::returnPtrPos(node* list, int &pos, node* ptr)
 {
 	if (list == nullptr) return 1;
 	if (ptr == nullptr) return 2;
@@ -478,7 +478,7 @@ int csList::returnBackData(node* list, int &data)
 	} while (list != head);
 }
 
-int csList::returnDataByPos(node* list, int &data, int pos)
+int csList::returnPosData(node* list, int &data, int pos)
 {
 	if (list == nullptr) return 1;
 
@@ -496,7 +496,7 @@ int csList::returnDataByPos(node* list, int &data, int pos)
 	return -1;
 }
 
-int csList::returnDataByPtr(node* list, int &data, node* ptr)
+int csList::returnPtrData(node* list, int &data, node* ptr)
 {
 	if (list == nullptr) return 1;
 	if (ptr == nullptr) return 2;
@@ -513,7 +513,7 @@ int csList::returnDataByPtr(node* list, int &data, node* ptr)
 	return -1;
 }
 
-int csList::updateDataByPos(node* list, int pos, int data)
+int csList::updatePosData(node* list, int pos, int data)
 {
 	if (list == nullptr) return 1;
 
@@ -531,7 +531,7 @@ int csList::updateDataByPos(node* list, int pos, int data)
 	return -1;
 }
 
-int csList::updateDataByPtr(node* list, int data, node* ptr)
+int csList::updatePtrData(node* list, node* ptr, int data)
 {
 	if (list == nullptr) return 1;
 	if (ptr == nullptr) return 2;
@@ -548,7 +548,7 @@ int csList::updateDataByPtr(node* list, int data, node* ptr)
 	return -1;
 }
 
-int csList::findDataReturnPos(node* list, int data, int &pos)
+int csList::returnDataPos(node* list, int data, int &pos)
 {
 	if (list == nullptr) return 1;
 
@@ -566,7 +566,7 @@ int csList::findDataReturnPos(node* list, int data, int &pos)
 	return -1;
 }
 
-int csList::findDataReturnPtr(node* list, int data, node* &ptr)
+int csList::returnDataPtr(node* list, int data, node* &ptr)
 {
 	if (list == nullptr) return 1;
 
@@ -582,7 +582,7 @@ int csList::findDataReturnPtr(node* list, int data, node* &ptr)
 	return -1;
 }
 
-int csList::findMinReturnPos(node* list, int &min, int &pos)
+int csList::returnMinPos(node* list, int &min, int &pos)
 {
 	if (list == nullptr) return 1;
 
@@ -604,7 +604,7 @@ int csList::findMinReturnPos(node* list, int &min, int &pos)
 	return 0;
 }
 
-int csList::findMinReturnPtr(node* list, int &min, node* &ptr)
+int csList::returnMinPtr(node* list, int &min, node* &ptr)
 {
 	if (list == nullptr) return 1;
 
@@ -623,7 +623,7 @@ int csList::findMinReturnPtr(node* list, int &min, node* &ptr)
 	return 0;
 }
 
-int csList::findMaxReturnPos(node* list, int &max, int &pos)
+int csList::returnMaxPos(node* list, int &max, int &pos)
 {
 	if (list == nullptr) return 1;
 
@@ -645,7 +645,7 @@ int csList::findMaxReturnPos(node* list, int &max, int &pos)
 	return 0;
 }
 
-int csList::findMaxReturnPtr(node* list, int &max, node* &ptr)
+int csList::returnMaxPtr(node* list, int &max, node* &ptr)
 {
 	if (list == nullptr) return 1;
 
@@ -664,7 +664,7 @@ int csList::findMaxReturnPtr(node* list, int &max, node* &ptr)
 	return 0;
 }
 
-int csList::findTailReturnPos(node* list, int &pos)
+int csList::returnTailPos(node* list, int &pos)
 {
 	if (list == nullptr) return 1;
 
@@ -681,7 +681,7 @@ int csList::findTailReturnPos(node* list, int &pos)
 	} while (list != head);
 }
 
-int csList::findTailReturnPtr(node* list, node* &ptr)
+int csList::returnTailPtr(node* list, node* &ptr)
 {
 	if (list == nullptr) return 1;
 
@@ -696,7 +696,7 @@ int csList::findTailReturnPtr(node* list, node* &ptr)
 	} while (list != head);
 }
 
-int csList::movePosToFront(node** list, int pos)
+int csList::movePosFront(node** list, int pos)
 {
 	if (*list == nullptr) return 1;
 	if (pos == 0) return -2; // no action needed.
@@ -748,7 +748,7 @@ int csList::movePosToFront(node** list, int pos)
 	}
 }
 
-int csList::movePtrToFront(node** list, node* ptr)
+int csList::movePtrFront(node** list, node* ptr)
 {
 	if (*list == nullptr) return 1;
 	if (ptr == nullptr) return 2;
@@ -779,7 +779,7 @@ int csList::movePtrToFront(node** list, node* ptr)
 	else return -1; // ptr not in list.
 }
 
-int csList::movePosToBack(node** list, int pos)
+int csList::movePosBack(node** list, int pos)
 {
 	if (*list == nullptr) return 1;
 
@@ -843,7 +843,7 @@ int csList::movePosToBack(node** list, int pos)
 	}
 }
 
-int csList::movePtrToBack(node** list, node* ptr)
+int csList::movePtrBack(node** list, node* ptr)
 {
 	if (*list == nullptr) return 1;
 	if (ptr == nullptr) return 2;
@@ -962,62 +962,6 @@ int csList::movePosUp(node** list, int pos)
 	}
 }
 
-int csList::movePtrUp(node** list, node* ptr)
-{
-	if (*list == nullptr) return 1;
-	if (ptr == nullptr) return 2;
-
-	node* head = *list;
-	node* before = *list; // node before nodes to be swapped.
-	node* prev = *list; // node previous to ptr.
-	node* tail = *list;
-	node* temp1 = *list; // hold 'before' node b/w sweeps.
-	node* temp2 = *list; // hold 'prev' node b/w sweeps.
-	bool foundPtr = false;
-	// find ptr in list.
-	do {
-		node* curr = *list;
-		if (curr == ptr) // found ptr.
-		{
-			foundPtr = true;
-			before = temp2;
-			prev = temp1;
-		}
-		if (curr->next == head) // find tail node.
-		{
-			tail = curr;
-		}
-		temp2 = temp1; // 'before'.
-		temp1 = curr; // 'prev'.
-		*list = curr->next;
-	} while (*list != head);
-
-	if (foundPtr == true)
-	{
-		node* temp = ptr->next;
-		if (prev == head)
-		{
-			tail->next = ptr;
-			ptr->next = prev;
-			prev->next = temp;
-			head = ptr;
-		}
-		else
-		{
-			before->next = ptr;
-			ptr->next = prev;
-			prev->next = temp;
-		}
-		*list = head;
-		return 0;
-	}
-	else // ptr not in list, reset list.
-	{
-		*list = head;
-		return -1;
-	}
-}
-
 int csList::movePosDown(node** list, int pos)
 {
 	if (*list == nullptr) return 1;
@@ -1071,6 +1015,62 @@ int csList::movePosDown(node** list, int pos)
 		return 0;
 	}
 	else // pos not in list, reset list.
+	{
+		*list = head;
+		return -1;
+	}
+}
+
+int csList::movePtrUp(node** list, node* ptr)
+{
+	if (*list == nullptr) return 1;
+	if (ptr == nullptr) return 2;
+
+	node* head = *list;
+	node* before = *list; // node before nodes to be swapped.
+	node* prev = *list; // node previous to ptr.
+	node* tail = *list;
+	node* temp1 = *list; // hold 'before' node b/w sweeps.
+	node* temp2 = *list; // hold 'prev' node b/w sweeps.
+	bool foundPtr = false;
+	// find ptr in list.
+	do {
+		node* curr = *list;
+		if (curr == ptr) // found ptr.
+		{
+			foundPtr = true;
+			before = temp2;
+			prev = temp1;
+		}
+		if (curr->next == head) // find tail node.
+		{
+			tail = curr;
+		}
+		temp2 = temp1; // 'before'.
+		temp1 = curr; // 'prev'.
+		*list = curr->next;
+	} while (*list != head);
+
+	if (foundPtr == true)
+	{
+		node* temp = ptr->next;
+		if (prev == head)
+		{
+			tail->next = ptr;
+			ptr->next = prev;
+			prev->next = temp;
+			head = ptr;
+		}
+		else
+		{
+			before->next = ptr;
+			ptr->next = prev;
+			prev->next = temp;
+		}
+		*list = head;
+		return 0;
+	}
+	else // ptr not in list, reset list.
 	{
 		*list = head;
 		return -1;
@@ -1331,8 +1331,8 @@ int csList::shuffle(node** list)
 		// get pointers to list positions.
 		node* ptr1 = nullptr;
 		node* ptr2 = nullptr;
-		this->returnPtrByPos(*list, position1, ptr1);
-		this->returnPtrByPos(*list, position2, ptr2);
+		this->returnPosPtr(*list, ptr1, position1);
+		this->returnPosPtr(*list, ptr2, position2);
 		swap(list, ptr1, ptr2);
 		++temp;
 	} while (temp < pow(nodeCount, 2));
